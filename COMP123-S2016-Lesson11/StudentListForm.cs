@@ -28,13 +28,12 @@ namespace COMP123_S2016_Lesson11
 
         private void StudentListForm_Activated(object sender, EventArgs e)
         {
-            
-           
+            this.studentsTableAdapter.Fill(this.cOMP123DataSet.Students);
         }
 
         private void StudentListForm_Load(object sender, EventArgs e)
         {
-            this.studentsTableAdapter.Fill(this.cOMP123DataSet.Students);
+            
         }
 
         private void StudentsDataGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
@@ -49,7 +48,16 @@ namespace COMP123_S2016_Lesson11
 
         private void StudentsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+            // create the new studentDetails form
+            StudentDetailsForm StudentDetails = new StudentDetailsForm();
+            StudentDetails.studentListForm = this; // make a reference to this form
+            StudentDetails.FormType = e.ColumnIndex; // send over the button that is clicked
+
+            // get the student id from the StudentsDataGridView
+            StudentDetails.StudentID = Convert.ToInt32(StudentsDataGridView.Rows[e.RowIndex].Cells["StudentID"].Value);
+
+            StudentDetails.Show(); // show the studentDetails Form
+            this.Hide(); // hide this form
         }
 
     }

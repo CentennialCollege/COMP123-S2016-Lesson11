@@ -47,6 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Student.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Student.dbml</DependentUpon>
+    </Compile>
     <Compile Include="StudentDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Student.dbml.layout">
+      <DependentUpon>Student.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="StudentDetailsForm.resx">
       <DependentUpon>StudentDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +111,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Student.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Student.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
