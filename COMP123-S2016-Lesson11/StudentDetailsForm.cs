@@ -30,15 +30,37 @@ namespace COMP123_S2016_Lesson11
 
             Student newStudent = new Student();
 
+            // check if the form type is Details, Edit or Delete
+            if(this.FormType > 3)
+            {
+                newStudent = (from student in db.Students
+                              where student.StudentID == this.StudentID
+                              select student).FirstOrDefault();
+            }
+
             // copy data into Student Object from form Text Boxes
             newStudent.FirstName = FirstNameTextBox.Text;
             newStudent.LastName = LastNameTextBox.Text;
             newStudent.Number = StudentNumberTextBox.Text;
 
-            // Insert the new Student Object into the SQL Database
-            db.GetTable<Student>().InsertOnSubmit(newStudent);
+            // Check if Form Type is "Add Student"
+            if(this.FormType < 4) {
+                // Insert the new Student Object into the SQL Database
+                db.GetTable<Student>().InsertOnSubmit(newStudent);
+            }
 
-            // Save changes
+            // Delete Record
+            if(this.FormType == (int)ColumnButton.Delete)
+            {
+                //Confirm if the user wants to delete the record
+                DialogResult result = MessageBox.Show("Are You Sure?", "Confirm Deletion", MessageBoxButtons.OKCancel);
+                if(result == DialogResult.OK)
+                {
+                    db.GetTable<Student>().DeleteOnSubmit(newStudent);
+                }
+            }
+
+            // Save changes / update record
             db.SubmitChanges();
 
             // show the Student List Form
