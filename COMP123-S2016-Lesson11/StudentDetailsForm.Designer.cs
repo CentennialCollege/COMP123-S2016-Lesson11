@@ -79,6 +79,7 @@
             this.FirstNameTextBox.Name = "FirstNameTextBox";
             this.FirstNameTextBox.Size = new System.Drawing.Size(362, 39);
             this.FirstNameTextBox.TabIndex = 2;
+            this.FirstNameTextBox.TextChanged += new System.EventHandler(this.FormTextBox_TextChanged);
             // 
             // LastNameTextBox
             // 
@@ -87,6 +88,7 @@
             this.LastNameTextBox.Name = "LastNameTextBox";
             this.LastNameTextBox.Size = new System.Drawing.Size(362, 39);
             this.LastNameTextBox.TabIndex = 4;
+            this.LastNameTextBox.TextChanged += new System.EventHandler(this.FormTextBox_TextChanged);
             // 
             // LastNameLabel
             // 
@@ -105,6 +107,7 @@
             this.StudentNumberTextBox.Name = "StudentNumberTextBox";
             this.StudentNumberTextBox.Size = new System.Drawing.Size(362, 39);
             this.StudentNumberTextBox.TabIndex = 6;
+            this.StudentNumberTextBox.TextChanged += new System.EventHandler(this.FormTextBox_TextChanged);
             // 
             // StudentNumberLabel
             // 
@@ -133,7 +136,6 @@
             this.AcceptButton = this.SubmitButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CancelButton;
             this.ClientSize = new System.Drawing.Size(386, 454);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.StudentNumberTextBox);
